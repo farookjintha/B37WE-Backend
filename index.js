@@ -14,6 +14,10 @@ db();
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+res.status(200).send('Welcome to my Quotes Application')
+})
+
 app.use(quotesRoutes);
 
 const PORT = process.env.PORT;
