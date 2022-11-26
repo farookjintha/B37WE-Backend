@@ -3,6 +3,7 @@ const Quotes = require('../models/quotes.model');
 
 exports.getAllQuotes = (req, res) => {
     try{
+        console.log('Query Params: ', req.query)
         Quotes.find((err, data) => {
             if(err){
                 return res.status(400).send({message: 'Error while retrieving quotes.'})
