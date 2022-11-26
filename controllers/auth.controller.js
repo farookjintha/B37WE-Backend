@@ -2,14 +2,7 @@ const Users = require('../models/users.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { response } = require('express');
-// {
-//    name: 'Farook',
-//    email: 'farook@gamil.com',
-//    password: 'Welcome123' ,
-//    mobileNumber: '9999913131',
-//    role: 1,
-//    bloodGroup: 'O +ve'
-// }
+
 exports.register = async (req, res) => {
     try{
         const payload = req.body;
@@ -19,15 +12,6 @@ exports.register = async (req, res) => {
         const hashValue = await bcrypt.hash(payload.password, 12); // 12 -> salting rounds
         payload.hashedPassword = hashValue;
         delete payload.password;
-
-        // {
-        //    name: 'Farook',
-        //    email: 'farook@gamil.com',
-        //    hashedPassword: '@#$%@VSFSRGDVSFSFEY%YRGCSC' ,
-        //    mobileNumber: '9999913131',
-        //    role: 1,
-        //    bloodGroup: 'O +ve'
-        // }
 
         const newUser = new Users(payload);
 
