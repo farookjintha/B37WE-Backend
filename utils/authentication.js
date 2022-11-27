@@ -8,7 +8,7 @@ exports.requireSignIn = expressjwt({
 })
 
 exports.isAuth = (req, res, next) =>{
-    const user = req.auth._id === req.params.userID;
+    const user = req.auth._id === req.profile._id.toString();
     if(!user){
         return res.status(401).send('Access Denied! Sign in again.')
     }
